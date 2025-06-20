@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "companies"
+  },
+  "options": {
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "eligibility": {
+      "type": "text"
+    },
+    "visit_date": {
+      "type": "datetime"
+    },
+    "currentstatus": {
+      "type": "enumeration",
+      "enum": [
+        "upcoming",
+        "completed"
+      ]
+    }
+  }
+}
