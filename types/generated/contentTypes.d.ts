@@ -405,6 +405,45 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDasboardMetricDasboardMetric
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dasboard_metrics';
+  info: {
+    displayName: 'DasboardMetric';
+    pluralName: 'dasboard-metrics';
+    singularName: 'dasboard-metric';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    cid: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dasboard-metric.dasboard-metric'
+    > &
+      Schema.Attribute.Private;
+    metricKey: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    subCategory: Schema.Attribute.String & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    value: Schema.Attribute.Float & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiQuestionBankQuestionBank
   extends Struct.CollectionTypeSchema {
   collectionName: 'question_banks';
@@ -464,6 +503,45 @@ export interface ApiResourceResource extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSystemConfigSystemConfig
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'system_configs';
+  info: {
+    displayName: 'SystemConfig';
+    pluralName: 'system-configs';
+    singularName: 'system-config';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    cid: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    isPublic: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    key: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::system-config.system-config'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -977,8 +1055,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::company.company': ApiCompanyCompany;
+      'api::dasboard-metric.dasboard-metric': ApiDasboardMetricDasboardMetric;
       'api::question-bank.question-bank': ApiQuestionBankQuestionBank;
       'api::resource.resource': ApiResourceResource;
+      'api::system-config.system-config': ApiSystemConfigSystemConfig;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
