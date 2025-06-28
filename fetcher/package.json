@@ -1,0 +1,19 @@
+{
+  "name": "fetcher",
+  "version": "0.0.1",
+  "description": "This contains all APIs to fetch data from various coding platform and other required sites for the CAC project.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "author": "CAC Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "playwright": "^1.53.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
